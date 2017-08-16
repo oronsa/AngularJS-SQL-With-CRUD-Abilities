@@ -1,0 +1,2 @@
+c:\users\oron sason\documents\visual studio 2017\Projects\InterviewQualiTest\InterviewQualiTest\obj\Debug\InterviewQualiTest.njsprojResolveAssemblyReference.cache
+c:\users\oron sason\documents\visual studio 2017\Projects\InterviewQualiTest\InterviewQualiTest\bin\Microsoft.NodejsTools.WebRole.dll

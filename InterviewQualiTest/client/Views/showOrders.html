@@ -1,0 +1,42 @@
+﻿<div class="col-lg-12">
+    <div class="panel panel-blue">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-database"></i><b>Rented Cars </b></h3>
+        </div>
+        <div  ng-show="!orderExist">
+            <label>There are currently no orders in the system, please try later or enter a new order </label>
+        </div>
+        <md-content layout-padding="" ng-show="orderExist">
+            <br>
+            <input ng-model="query" placeholder="Search customer" class="form-control">
+            <br>
+            <table id="reportsTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><span></span> Type</th>
+                        <th><span></span>Customer Name</th>
+                        <th><span></span>Email Address</th>
+                        <th><span></span>From Date</th>
+                        <th><span></span>To Date</th>
+                        <th><span></span>Phone number</th>
+                        <th><span></span> Delete Order</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in orders | filter: query">
+                        <td ng-bind="item.CarName"></td>
+                        <td ng-bind="item.CustomerName"></td>
+                        <td ng-bind="item.EmailAddress"></td>
+                        <td ng-bind="item.FromDate"></td>
+                        <td ng-bind="item.ToDate"></td>
+                        <td ng-bind="item.PhoneNumber"></td>
+                        <td ng-click="deleteOrder(item)"><span class="glyphicon glyphicon-trash"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-content>
+        <div class="panel-footer">
+        </div>
+    </div>
+</div>

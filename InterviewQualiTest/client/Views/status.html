@@ -1,0 +1,103 @@
+﻿
+<div class="col-lg-12">
+    <div class="panel panel-blue">
+
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-database"></i><b>list of cars </b></h3>
+        </div>
+        <input type="button" class="btn btn-success btn-md" ng-model="createButton" value="{{CreateNewButton}}" ng-click="showForm()" />
+        <div ng-show="displayForm==='true'">
+            <form name="AddCarForm" ng-submit="AddNewCar()">
+                <md-input-container class="md-icon-float md-block col-md-3">
+                    <input type="text" name="Type" class="form-control" ng-model="CarData.type" maxlength="20" 
+                           placeholder="Enter full Car Name, for example:Seat Up"
+                           required>
+                    <div ng-messages="AddCarForm.Type.$error">
+                        <div ng-message="required">
+                            Type is required!
+                        </div>
+                    </div>
+
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-block col-md-3">
+                    <input type="number"  name="Seats" class="form-control" ng-model="CarData.seats" maxlength="1" placeholder="Number Of Seats"
+                           required>
+                    <div ng-messages="AddCarForm.Seats.$error">
+                        <div ng-message="required">
+                            Seats is required!
+                        </div>
+                        <div ng-message="maxlength">
+                            max of 1 didgit is required
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-active" flex-gt-sm="">
+                    <md-select ng-model="CarData.air_cond" aria-label="Close" name="air_cond" placeholder="Air Conditioner"
+                               required>
+                        <md-option value="Yes">Yes</md-option>
+                        <md-option value="No">No</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-block col-md-3">
+                    <input type="number" name="Doors" class="form-control" ng-model="CarData.doors" maxlength="1" placeholder="Number Of Doors"
+                           required>
+                    <div ng-messages="AddCarForm.Doors.$error">
+                        <div ng-message="required">
+                            Seats is required!
+                        </div>
+                        <div ng-message="maxlength">
+                            max of 1 didgit is required
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-active" flex-gt-sm="">
+                    <md-select ng-model="CarData.transmission" aria-label="Close" name="transmission" placeholder="Transmission"
+                               required>
+                        <md-option value="Auto">Automatic</md-option>
+                        <md-option value="Manual">Manual</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <button type="submit" class="btn btn-success btn-md col-md-12">Add Car To List</button>
+            </form>
+        </div>
+        <div ng-show="!carList">
+            <label>There are currently no cars in the system, please try later or enter a new car </label>
+        </div>
+        <md-content layout-padding="" ng-show="carList">
+            <br>
+            <input ng-model="query" placeholder="Search car" class="form-control">
+            <br>
+            <table id="carsTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><span></span> Type</th>
+                        <th><span></span>Seats</th>
+                        <th><span></span>Air Cond</th>
+                        <th><span></span>Doors</th>
+                        <th><span></span>Transmission</th>
+                        <th><span></span>Available</th>
+                        <th><span></span> Remove</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in cars| filter: query">
+                        <td ng-bind="item.CarName"></td>
+                        <td ng-bind="item.Seats"></td>
+                        <td ng-bind="item.Air_Cond"></td>
+                        <td ng-bind="item.Doors"></td>
+                        <td ng-bind="item.Transmission"></td>
+                        <td ng-bind="item.Available"></td>
+                        <td ng-click="removeCar(item)"><span class="glyphicon glyphicon-trash"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-content>
+        <div class="panel-footer">
+        </div>
+    </div>
+</div>
